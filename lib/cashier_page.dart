@@ -8,30 +8,30 @@ class CashierPage extends StatefulWidget {
 }
 
 class _CashierPageState extends State<CashierPage> {
-  List<Map<String,dynamic>> products = [
+  List<Map<String, dynamic>> products = [
     {
-      "image" : "assets/images/1.jpeg",
-      "name" : "Antangin",
-      "price" : 3000,
-      "stock" : 10,
+      "image": "assets/images/1.jpeg",
+      "name": "Antangin",
+      "price": 3000,
+      "stock": 10,
     },
     {
-      "image" : "assets/images/2.png",
-      "name" : "Teh Sariwangi",
-      "price" : 5000,
-      "stock" : 10,
+      "image": "assets/images/2.png",
+      "name": "Teh Sariwangi",
+      "price": 5000,
+      "stock": 10,
     },
     {
-      "image" : "assets/images/3.jpg",
-      "name" : "UltraMilk",
-      "price" : 9000,
-      "stock" : 10,
+      "image": "assets/images/3.jpg",
+      "name": "UltraMilk",
+      "price": 9000,
+      "stock": 10,
     },
     {
-      "image" : "assets/images/4.jpeg",
-      "name" : "Indomies",
-      "price" : 3500,
-      "stock" : 10,
+      "image": "assets/images/4.jpeg",
+      "name": "Indomies",
+      "price": 3500,
+      "stock": 10,
     },
   ];
   @override
@@ -90,77 +90,83 @@ class _CashierPageState extends State<CashierPage> {
                 ),
                 Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: ListView.separated(
-                          separatorBuilder: (context, index) {
-                            return const SizedBox(
-                              height: 15,
-                            );
-                          },
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Container(
+                  padding: const EdgeInsets.only(bottom: 100),
+                  child: ListView.separated(
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(
+                          height: 15,
+                        );
+                      },
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: Colors.grey[300],
+                          ),
+                          child: Row(children: [
+                            Container(
                               height: 100,
+                              width: 100,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                color: Colors.grey[300],
-                              ),
-                              child: Row(children: [
-                                Container(
-                                  height: 100,
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(8.0),
-                                      bottomLeft: Radius.circular(8.0),
-                                    ),
-                                    color: Colors.grey[400],
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                    "${products[index]['image']}",
                                   ),
+                                  fit: BoxFit.cover,
                                 ),
-                                const SizedBox(
-                                  width: 10,
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(8.0),
+                                  bottomLeft: Radius.circular(8.0),
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 10),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                color: Colors.grey[400],
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                             Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Cokelat Susu",
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                          Text(
-                                            "Minuman",
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w300,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
                                       Text(
-                                        "Rp. 10.000",
-                                        style: TextStyle(
+                                        "${products[index]['name']}",
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w400,
                                         ),
                                       ),
+                                      Text(
+                                        "Stock : ${products[index]['stock']}",
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
                                     ],
                                   ),
-                                ),
-                              ]),
-                            );
-                          }),
-                    ))
+                                  Text(
+                                        "${products[index]['price']}",
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ]),
+                        );
+                      }),
+                ))
               ],
             ),
           ),
